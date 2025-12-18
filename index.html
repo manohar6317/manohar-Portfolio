@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manohar Daripalli</title>
+    <title>Manohar Daripalli | Cloud & Software Engineer</title>
     <style>
         /*
         ---
@@ -181,8 +181,9 @@
         ---
         */
         #hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
@@ -208,9 +209,14 @@
             100% { background-position: 0% 50%; }
         }
 
-        .hero-content { animation: fadeInDown 1.5s ease-out; }
-        .hero-content h1 { font-size: 4rem; margin-bottom: 1rem; text-shadow: 0 0 15px var(--accent-color); }
-        .hero-content p { font-size: 1.5rem; margin-bottom: 2rem; max-width: 600px; }
+        .hero-content { animation: fadeInDown 1.5s ease-out; max-width: 800px; padding: 20px; }
+        .hero-content h1 { 
+            font-size: 4.5rem; 
+            margin-bottom: 1rem; 
+            text-shadow: 0 0 15px var(--accent-color); 
+            line-height: 1.1;
+        }
+        .hero-content p { font-size: 1.3rem; margin-bottom: 2rem; color: rgba(255, 255, 255, 0.9); }
 
         .resume-button {
             display: inline-block; padding: 1rem 2.5rem; background-color: transparent;
@@ -225,14 +231,14 @@
             transition: width 0.4s ease, height 0.4s ease; z-index: -1; opacity: 0.3;
         }
         .resume-button:hover { color: var(--bg-color); border-color: var(--glow-color); box-shadow: 0 0 20px var(--glow-color); }
-        .resume-button:hover::before { width: 250px; height: 250px; }
+        .resume-button:hover::before { width: 350px; height: 350px; }
 
         /*
         ---
         --- PROJECTS SECTION
         ---
         */
-        #projects .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+        #projects .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2.5rem; }
         .project-card {
             background-color: rgba(48, 30, 103, 0.2); border: 1px solid var(--primary-color);
             border-radius: 15px; padding: 2rem; position: relative; overflow: hidden;
@@ -258,7 +264,7 @@
             background-color: var(--secondary-color); color: var(--bg-color); padding: 0.3rem 0.8rem;
             border-radius: 20px; font-size: 0.8rem; font-weight: 500;
         }
-        .project-link { color: var(--glow-color); text-decoration: none; font-weight: bold; transition: text-shadow 0.3s ease; }
+        .project-link { color: var(--glow-color); text-decoration: none; font-weight: bold; transition: text-shadow 0.3s ease; display: inline-block; margin-right: 15px;}
         .project-link:hover { text-decoration: underline; text-shadow: 0 0 8px var(--glow-color); }
 
         /*
@@ -266,7 +272,7 @@
         --- CERTIFICATIONS SECTION
         ---
         */
-        #certifications .certifications-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        #certifications .certifications-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .certification-card {
             background-color: rgba(48, 30, 103, 0.2); border-radius: 10px; padding: 1.5rem;
             text-align: center; position: relative; overflow: hidden; transition: transform 0.3s ease;
@@ -284,7 +290,7 @@
         .certification-card:hover { transform: scale(1.05); }
         .certification-card:hover::before { opacity: 1; }
         .certification-card img { width: 80px; height: 80px; margin-bottom: 1rem; border-radius: 50%; background-color: var(--primary-color); object-fit: cover; }
-        .certification-card p { font-size: 1.1rem; margin-bottom: 1rem; }
+        .certification-card p { font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600;}
         .certification-card a { color: var(--accent-color); text-decoration: none; }
         .certification-card a:hover { color: var(--glow-color); text-decoration: underline; }
 
@@ -356,12 +362,12 @@
 
         /*
         ---
-        --- SKILLS SECTION (NEW: BLACK HOLE)
+        --- SKILLS SECTION
         ---
         */
         #skills .skills-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 4rem 2rem;
             justify-items: center;
         }
@@ -408,17 +414,15 @@
             font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
-            /* Initial state for animation */
             opacity: 0;
             transform: translate(0, 0) scale(0);
-            /* Transition for the emerge and hover animations */
             transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), 
                         opacity 0.4s ease,
                         background-color 0.3s, 
                         box-shadow 0.3s;
         }
         .skill-item:hover {
-            transform: scale(1.1) !important; /* Important to override the final transform */
+            transform: scale(1.1) !important;
             background-color: var(--glow-color);
             box-shadow: 0 0 15px var(--glow-color);
             z-index: 10;
@@ -479,7 +483,7 @@
             .hero-content h1 { font-size: 3rem; }
             #projects .projects-grid { grid-template-columns: 1fr; }
             #certifications .certifications-grid { grid-template-columns: repeat(2, 1fr); }
-            .nav-links { display: none; } /* Basic mobile nav handling */
+            .nav-links { display: none; } /* Basic mobile nav handling - could be improved with hamburger menu */
             #skills .skills-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
@@ -501,17 +505,12 @@
             .black-hole-container { transform: scale(0.9); }
         }
 
-        #manohar-top{
-            font-size: 100px;
-        }
     </style>
 </head>
 <body>
 
-    <!-- Animated Star Background Container -->
     <div id="star-container"></div>
 
-    <!-- NAVIGATION BAR -->
     <nav id="navbar">
         <a href="#hero" class="nav-logo">return 🏠;</a>
         <ul class="nav-links">
@@ -523,126 +522,141 @@
         </ul>
     </nav>
 
-    <!-- HERO SECTION -->
     <section id="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 id= "manohar-top" >Manohar Daripalli</h1>
+                <br><br>
+                <h1>Manohar Daripalli</h1>
+                <p>Cloud Infrastructure & DevOps Engineer</p>
             </div>
         </div>
     </section>
 
 
-
     <section id="hero">
         <div class="container">
             <div class="hero-content">
-                <p>Enthusiastic and detail-oriented Computer Science graduate with strong skills in Java, Spring Boot,
-                    React.js, and full-stack development. Proficient in building scalable web applications with RESTful APIs,
-                    database integration (MySQL, MongoDB), and responsive front-end frameworks. Certified in Software
-                    Engineering simulations by JPMorgan Chase & Goldman Sachs, with exposure to CI/CD pipelines, version
-                    control (Git/GitHub), and Agile methodologies. Recognized for problem-solving, teamwork, adaptability,
-                    and the ability to learn quickly to contribute effectively to development teams.
+                <p>
+                    Motivated Computer Science graduate with hands-on experience in AWS Cloud Infrastructure and IT Operations. 
+                    Proven ability to architect and secure serverless applications using Lambda, S3, and DynamoDB. 
+                    Skilled in Docker, Python, and technical troubleshooting to ensure operational excellence.
                 </p>
-                <a href="https://drive.google.com/file/d/1E7VSGWrLdX1ke0tnRY5K-JQOQe5qpxVu/view" class="resume-button">Download Resume</a>
+                <a href="https://drive.google.com/file/d/1Mmka9uVNSp49zwinnOQLd7UxzxH-q5jf/view?usp=sharing" class="resume-button" target="_blank">Download Resume</a>
             </div>
         </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
     <section id="projects">
         <div class="container">
-            <h2 class="section-title fade-in">My Projects</h2>
+            <h2 class="section-title fade-in">Featured Projects</h2>
             <div class="projects-grid">
-                <!-- Project Cards (6 placeholders) -->
-                <div class="project-card fade-in"><h3>Money Manager</h3><p>Money Manager is a full-stack personal finance management application built with Java Spring Boot (backend), React + Vite (frontend), and MySQL (database). It helps users track income, expenses, and categories, with features like JWT authentication, RESTful APIs, Excel export, and responsive UI.</p><div class="tech-stack"><span>Java</span><span>Spring Boot</span><span>Hibernate</span><span>React + Vite</span><span>MySQL</span></div><a href="https://github.com/manohar6317/moneyManager" class="project-link">View on GitHub &rarr;</a></div>
-                <div class="project-card fade-in"><h3>Car Rental</h3><p>A fullstack car rental platform built with React, Node.js, Express, and MongoDB. Users can browse and book cars, while owners can list and manage their vehicles. Features include authentication, image uploads, and a modern responsive UI.</p><div class="tech-stack"><span>JavaScript</span><span>React.js</span><span>Node.js</span><span>Express.js</span><span>MongoDB</span><span>Tailwind CSS</span></div><a href="https://github.com/manohar6317/CarRental-fullstack" class="project-link">View on GitHub &rarr;</a><br><a href="https://car-rental-tau-livid.vercel.app/" class="project-link"> Live Preview &rarr;</a></div>
-                <div class="project-card fade-in"><h3>FinTech-CashPoint-Simulator</h3><p>FinTech CashPoint Simulator – A Java Swing & MySQL based ATM simulation app with login, deposit, withdraw, balance, and mini statement. Showcasing core FinTech concepts, secure transactions, and OOP principles in a real-world banking simulation.</p><div class="tech-stack"><span>java</span><span>swing</span><span>jdbc</span></div><a href="https://github.com/manohar6317/FinTech-CashPoint-Simulator" class="project-link">View on GitHub &rarr;</a></div>
-                <div class="project-card fade-in"><h3>Live Strategy Backtester</h3><p>C++ trading system for BTC/USDT with backtesting engine, live shadow trading simulation, Binance API integration, algorithmic trading strategies, risk management, order matching, performance analytics (Sharpe, Sortino, Max Drawdown), and modular architecture for quantitative finance and crypto trading research.</p><div class="tech-stack"><span>C++</span><span>CMake</span></div><a href="https://github.com/manohar6317/live_strategy_backtester" class="project-link">View on GitHub &rarr;</a></div>
-                <div class="project-card fade-in"><h3>Attrition Layoff Prediction</h3><p>The goal of this project is to forecast employee attrition (voluntary exits) and potential layoffs (involuntary exits) using machine learning. This will enable the identification of key factors driving turnover, allowing organizations to take proactive steps.</p><div class="tech-stack"><span>Jupyter Notebook</span><span>SCSS</span><span>Python</span><span>JavaScript</span><span>CSS</span><span>HTML</span></div><a href="https://github.com/manohar6317/Attrition_Layoff_Prediction" class="project-link">View on GitHub &rarr;</a></div>
-                <div class="project-card fade-in"><h3>Ethereum Smart Contract Certificate Verification</h3><p>Ethereum Smart Contract Certificate Verification is a decentralized application (DApp) that enables the issuance and validation of certificates on the Ethereum blockchain. By harnessing smart contract technology, this system ensures that issued certificates are secure, immutable, and easily verifiable. Institutions can manage certificate issuance, revocation, and verification securely and transparently through a web-based interface. The platform also supports issuer management and leverages features like QR code generation and digital signatures to authenticate certificates.</p><div class="tech-stack"><span>Python</span><span>HTML</span><span>CSS</span></div><a href="https://github.com/manohar6317/Ethereum-Smart-Contract-Certificate-Verification" class="project-link">View on GitHub &rarr;</a></div>
+                
+                <div class="project-card fade-in">
+                    <h3>Money Manager</h3>
+                    <p>Deployed a 3-tier full-stack application on AWS, provisioning EC2 for backend hosting and RDS (MySQL) for managed database services. Containerized backend with Docker and configured VPC Security Groups for strict traffic rules.</p>
+                    <div class="tech-stack"><span>Java Spring Boot</span><span>React</span><span>AWS EC2</span><span>RDS (MySQL)</span><span>Docker</span><span>VPC</span></div>
+                    <a href="https://github.com/manohar6317/moneyManager" class="project-link" target="_blank">View on GitHub &rarr;</a>
+                    <br><a href="https://main.d3fy950yczu4mu.amplifyapp.com/home/" class="project-link" target="_blank">Live Demo &rarr;</a>
+                </div>
+
+                <div class="project-card fade-in">
+                    <h3>Serverless Visitor Counter</h3>
+                    <p>Architected a serverless backend using AWS Lambda (Python) and DynamoDB to process real-time analytics. Implemented strict security with AWS IAM (Least Privilege) and CORS policies for the S3-hosted frontend.</p>
+                    <div class="tech-stack"><span>AWS Lambda</span><span>Python (Boto3)</span><span>DynamoDB</span><span>S3</span><span>IAM</span><span>CloudWatch</span></div>
+                    <a href="https://github.com/manohar6317/aws-cloud-serverless-visiter-counter" class="project-link" target="_blank">View on GitHub &rarr;</a>
+                    <br><a href="http://manohar-cloud-portfolio-2025.s3-website-ap-southeast-2.amazonaws.com/" class="project-link" target="_blank">Live Demo &rarr;</a>
+                </div>
+
+
+                <div class="project-card fade-in">
+                    <h3>Car Rental Platform</h3>
+                    <p>A fullstack car rental platform where users can browse/book cars and owners can manage listings. Features authentication, image uploads, and a modern UI.</p>
+                    <div class="tech-stack"><span>React.js</span><span>Node.js</span><span>MongoDB</span><span>Express</span></div>
+                    <a href="https://github.com/manohar6317/CarRental-fullstack" class="project-link" target="_blank">View on GitHub &rarr;</a>
+                    <br><a href="https://car-rental-tau-livid.vercel.app/" class="project-link" target="_blank">Live Demo &rarr;</a>
+                </div>
+
+                <div class="project-card fade-in">
+                    <h3>Live Strategy Backtester</h3>
+                    <p>C++ trading system for BTC/USDT with backtesting engine, live shadow trading simulation, Binance API integration, and performance analytics (Sharpe, Sortino) for quantitative finance research.</p>
+                    <div class="tech-stack"><span>C++</span><span>CMake</span><span>Binance API</span><span>Quant Finance</span></div>
+                    <a href="https://github.com/manohar6317/live_strategy_backtester" class="project-link" target="_blank">View on GitHub &rarr;</a>
+                </div>
+
+                
+
+                <div class="project-card fade-in">
+                    <h3>FinTech CashPoint Simulator</h3>
+                    <p>Java Swing & MySQL based ATM simulation app with secure transactions, balance checks, and mini-statements, showcasing OOP principles in a banking simulation.</p>
+                    <div class="tech-stack"><span>Java</span><span>Swing</span><span>JDBC</span><span>MySQL</span></div>
+                    <a href="https://github.com/manohar6317/FinTech-CashPoint-Simulator" class="project-link" target="_blank">View on GitHub &rarr;</a>
+                </div>
+
+                <div class="project-card fade-in">
+                    <h3>Attrition Layoff Prediction</h3>
+                    <p>Forecasting employee attrition and potential layoffs using machine learning to identify key turnover factors and enable proactive HR steps.</p>
+                    <div class="tech-stack"><span>Python</span><span>ML</span><span>Jupyter</span><span>Pandas</span></div>
+                    <a href="https://github.com/manohar6317/Attrition_Layoff_Prediction" class="project-link" target="_blank">View on GitHub &rarr;</a>
+                </div>
+
             </div>
         </div>
     </section>
 
-
-        <!-- SKILLS SECTION (NEW) -->
     <section id="skills">
         <div class="container">
             <h2 class="section-title fade-in">My Skill Universe</h2>
             <div class="skills-grid fade-in">
                 
-                <!-- Category: Programming Languages -->
                 <div class="skill-category-wrapper">
-                    <h3 class="skill-category-title">Programming Languages</h3>
+                    <h3 class="skill-category-title">Languages</h3>
                     <div class="black-hole-container">
                         <div class="black-hole-core"></div>
                         <div class="skill-item">Java</div>
-                        <div class="skill-item">JavaScript</div>
-                        <div class="skill-item">Python</div>                        
-                        <div class="skill-item">HTML/CSS</div>
+                        <div class="skill-item">Python (Boto3)</div>
                         <div class="skill-item">SQL</div>
-                        <div class="skill-item">C/C++</div>
-                        
+                        <div class="skill-item">JavaScript</div>
+                        <div class="skill-item">HTML/CSS</div>
+                        <div class="skill-item">Shell/Bash</div>
                     </div>
                 </div>
 
-                <!-- Category: Frameworks -->
                 <div class="skill-category-wrapper">
-                    <h3 class="skill-category-title">Frameworks</h3>
+                    <h3 class="skill-category-title">AWS Cloud</h3>
                     <div class="black-hole-container">
                         <div class="black-hole-core"></div>
-                        <div class="skill-item">React.js</div>
-                        <div class="skill-item">Node.js</div>
-                        <div class="skill-item">Express.js</div>
-                        <div class="skill-item">Tailwind CSS</div>
-                        <div class="skill-item">Spring Boot</div>
-                        <div class="skill-item">Hibernate/JPA</div>
+                        <div class="skill-item">EC2 & S3</div>
+                        <div class="skill-item">Lambda</div>
+                        <div class="skill-item">DynamoDB</div>
+                        <div class="skill-item">IAM & VPC</div>
+                        <div class="skill-item">CloudWatch</div>
+                        <div class="skill-item">RDS</div>
                     </div>
                 </div>
 
-                <!-- Category: Databases -->
                 <div class="skill-category-wrapper">
-                    <h3 class="skill-category-title">Databases</h3>
+                    <h3 class="skill-category-title">DevOps & Tools</h3>
                     <div class="black-hole-container">
                         <div class="black-hole-core"></div>
-                        <div class="skill-item">MongoDB</div>
-                        <div class="skill-item">PostgreSQL</div>
-                        <div class="skill-item">MySQL</div>
-                        <div class="skill-item">Firebase</div>
-                        <div class="skill-item">Oracle SQL</div>
-                        <div class="skill-item">H2 Database</div>
-                    </div>
-                </div>
-
-                <!-- Category: Cloud & DevOps -->
-                <div class="skill-category-wrapper">
-                    <h3 class="skill-category-title">Cloud & DevOps & Tools</h3>
-                    <div class="black-hole-container">
-                        <div class="black-hole-core"></div>
-                        <div class="skill-item">AWS</div>
                         <div class="skill-item">Docker</div>
-                        <div class="skill-item">Maven</div>
-                        <div class="skill-item">Jenkins</div>
-                        <div class="skill-item">Git</div>
-                        <div class="skill-item">Vercel</div>
-                        <div class="skill-item">CI/CD</div>
-                        <div class="skill-item">Figma</div>
-                        <div class="skill-item">Postman</div>
+                        <div class="skill-item">Git/GitHub</div>
+                        <div class="skill-item">Linux</div>
+                        <div class="skill-item">Spring Boot</div>
+                        <div class="skill-item">React.js</div>
+                        <div class="skill-item">Putty/SSH</div>
                     </div>
                 </div>
 
-                <!-- Category: Soft Skills -->
                 <div class="skill-category-wrapper">
-                    <h3 class="skill-category-title">Soft Skills</h3>
+                    <h3 class="skill-category-title">Core Concepts</h3>
                     <div class="black-hole-container">
                         <div class="black-hole-core"></div>
-                        <div class="skill-item">Teamwork</div>
-                        <div class="skill-item">Problem-Solving</div>
-                        <div class="skill-item">Communication</div>
-                        <div class="skill-item">Leadership</div>
-                        <div class="skill-item">Collaboration</div>
-                        <div class="skill-item">Proactivity</div>
+                        <div class="skill-item">REST APIs</div>
+                        <div class="skill-item">Security Groups</div>
+                        <div class="skill-item">Root Cause Analysis</div>
+                        <div class="skill-item">Agile</div>
+                        <!-- <div class="skill-item">Prob. Solving</div> -->
+                        <!-- <div class="skill-item">Teamwork</div> -->
                     </div>
                 </div>
 
@@ -650,37 +664,54 @@
         </div>
     </section>
 
-
-    <!-- EDUCATION SECTION -->
-    <section id="education">
-        <div class="container">
-            <h2 class="section-title fade-in">Education</h2>
-            <div class="education-timeline">
-                <div class="timeline-item left fade-in"><div class="timeline-content"><h3>B.Tech. Computer Science Engineering- 2025 <br> CGPA: 7.37/10 </h3><p>Sri Chaitanya Institute of Technology and Research, Khammam</p></div></div>
-                <div class="timeline-item right fade-in"><div class="timeline-content"><h3>12th Inter. Maths Physics Chemistry - 2021 <br> Percentage: 86.7%</h3><p>Krishnaveni Co-Operative Junior College, Khammam</p></div></div>
-                <div class="timeline-item left fade-in"><div class="timeline-content"><h3>10th SSC - 2019 <br> GPA: 9.3/10</h3><p>kakatiya Techno School, Khammam</p></div></div>
-            </div>
-        </div>
-    </section>
-
-
-        <!-- CERTIFICATIONS SECTION -->
     <section id="certifications">
         <div class="container">
             <h2 class="section-title fade-in">Certifications</h2>
             <div class="certifications-grid">
-                <div class="certification-card fade-in"><img src="certione.png" alt="Cert Logo"><p>JPMorgan Chase & Co - Software Engineering Job Simulation</p><div class="tech-stack"><span> Kafka Integration</span><span>H2	Integration</span><span>REST API Integration</span><span>REST API Controller</span></div><a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Sj7temL583QAYpHXD/E6McHJDKsQYh79moz_Sj7temL583QAYpHXD_fH2BaCiFH8uTbdmFj_1740839053087_completion_certificate.pdf">View Certificate</a></div>
-                <div class="certification-card fade-in"><img src="certitwo.png" alt="Cert Logo"><p>CI/CD Beginners by simplilearn</p><div class="tech-stack"><span> Continuous Integration</span><span>Continuous Delivery</span><span>Jenkins </span><span>DevOps </span></div><a href="https://www.simplilearn.com/skillup-certificate-landing?token=eyJjb3Vyc2VfaWQiOiIxODA1IiwiY2VydGlmaWNhdGVfdXJsIjoiaHR0cHM6XC9cL2NlcnRpZmljYXRlcy5zaW1wbGljZG4ubmV0XC9zaGFyZVwvODQ0OTEwMF80OTQ2NjYyMTc0OTUzOTk4MDQwOS5wbmciLCJ1c2VybmFtZSI6Ik1hbm9oYXIgRGFyaXBhbGxpIn0%3D&utm_source=shared-certificate&utm_medium=lms&utm_campaign=shared-certificate-promotion&referrer=https%3A%2F%2Flms.simplilearn.com%2Fcourses%2F4303%2FCI%252FCD%2520for%2520Beginners%2Fcertificate%2Fdownload-skillup&%24web_only=true&_branch_match_id=1484836420505606749&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXL87MLcjJ1EssKNDLyczL1k%2FVN7L0N88rCTI0CUmyrytKTUstKsrMS49PKsovL04tsvUBqkpN8cwDAGnI3gBBAAAA">View Certificate</a></div>
-                <div class="certification-card fade-in"><img src="certithree.png" alt="Cert Logo"><p>Solutions Architecture Virtual Experience Program</p><div class="tech-stack"><span>Amazon Web Services (AWS)</span><span>Data Visualization</span><span>Solution Architecture</span><span>Technical Communication</span><span>AWS Pricing </span><span>Architecture Diagram</span></div><a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/AWS/kkE9HyeNcw6rwCRGw_AWS%20APAC_fH2BaCiFH8uTbdmFj_1679297532559_completion_certificate.pdf">View Certificate</a></div>
+                
+                <div class="certification-card fade-in">
+                    <img src="certione.png" alt="Oracle Logo" style="background: white; padding: 5px;">
+                    <p>Oracle Cloud Infrastructure 2025 Certified Generative AI Professional</p>
+                    <div class="tech-stack"><span>Gen AI</span><span>LLMs</span><span>RAG</span><span>Vector DB</span><span>Python</span></div>
+                    <a href="#">View Certificate</a>
+                </div>
+
+                <div class="certification-card fade-in">
+                    <img src="certitwo.png" alt="Walmart Logo" style="background: white; padding: 5px;">
+                    <p>Walmart USA Advanced Software Engineering (Forage)</p>
+                    <div class="tech-stack"><span>Java</span><span>Data Structures</span><span>UML</span><span>System Design</span></div>
+                    <a href="#">View Certificate</a>
+                </div>
+
+                <div class="certification-card fade-in">
+                    <img src="certithree.png" alt="JPMC Logo">
+                    <p>JPMorgan Chase & Co - Software Engineering Job Simulation</p>
+                    <div class="tech-stack"><span>REST API</span><span>Kafka</span><span>Spring</span></div>
+                    <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Sj7temL583QAYpHXD/E6McHJDKsQYh79moz_Sj7temL583QAYpHXD_fH2BaCiFH8uTbdmFj_1740839053087_completion_certificate.pdf">View Certificate</a>
+                </div>
+
+                 <div class="certification-card fade-in">
+                    <img src="certithree.png" alt="AWS Logo">
+                    <p>AWS Solutions Architecture Virtual Experience</p>
+                    <div class="tech-stack"><span>AWS</span><span>Architecture</span><span>Cloud</span></div>
+                    <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/AWS/kkE9HyeNcw6rwCRGw_AWS%20APAC_fH2BaCiFH8uTbdmFj_1679297532559_completion_certificate.pdf">View Certificate</a>
+                </div>
+
             </div>
         </div>
     </section>
 
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title fade-in">Education</h2>
+            <div class="education-timeline">
+                <div class="timeline-item left fade-in"><div class="timeline-content"><h3>B.Tech. Computer Science Engineering - 2025 <br> CGPA: 7.37/10 </h3><p>Sri Chaitanya Institute of Technology and Research, Khammam</p></div></div>
+                <div class="timeline-item right fade-in"><div class="timeline-content"><h3>12th Inter. Maths Physics Chemistry - 2021 <br> Percentage: 86.7%</h3><p>Krishnaveni Co-Operative Junior College, Khammam</p></div></div>
+                <div class="timeline-item left fade-in"><div class="timeline-content"><h3>10th SSC - 2019 <br> GPA: 9.3/10</h3><p>Kakatiya Techno School, Khammam</p></div></div>
+            </div>
+        </div>
+    </section>
 
-
-
-
-    <!-- ACHIEVEMENTS SECTION (NEW) -->
     <section id="achievements">
         <div class="container">
             <h2 class="section-title fade-in">Achievements</h2>
@@ -688,39 +719,38 @@
                 <div class="achievement-card fade-in">
                     <div class="achievement-icon">⭐</div>
                     <div class="achievement-details">
-                        <h3>Team Leadership in Academic Projects</h3>
-                        <p>Led my team in both major and minor academic projects, taking responsibility for planning, task distribution, and decision-making. Actively contributed to core technical development while mentoring teammates, ensuring smooth collaboration, innovation, and timely completion of project goals.</p>
+                        <h3>Team Leadership</h3>
+                        <p>Led academic project teams, managing task distribution and decision-making. Contributed to core development while mentoring teammates to ensure timely delivery.</p>
                     </div>
                 </div>
                 <div class="achievement-card fade-in">
                     <div class="achievement-icon">🏆</div>
                     <div class="achievement-details">
                         <h3>NASO Olympiad Medalist</h3>
-                        <p>Won a medal and secured 2nd position in school at the NASO Olympiad (naso.in), where I answered challenging questions on astronomy, space science, and physics concepts. This experience strengthened my problem-solving skills and scientific curiosity.</p>
+                        <p>Secured 2nd position in school at the National Astronomy & Science Olympiad (NASO), demonstrating strong problem-solving skills in physics and space science.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     
 
-
-    <!-- FOOTER (IMPROVED) -->
     <footer id="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-socials">
-                    <a href="mailto:your.email@example.com">
+                    <a href="mailto:manohar6317@gmail.com">
                         <span class="icon">📧</span>
                         <span>manohar6317@gmail.com</span>
                     </a>
-                    <a href="https://github.com/manohar6317" target="_blank">
+                    <a href="http://www.github.com/manohar6317" target="_blank">
                         <span class="icon">💻</span>
-                        <span>GitHub Profile</span>
+                        <span>GitHub</span>
                     </a>
-                    <a href="https://www.linkedin.com/in/d-manohar6317/" target="_blank">
+                    <a href="http://www.linkedin.com/in/d-manohar6317" target="_blank">
                         <span class="icon">🔗</span>
-                        <span>LinkedIn Profile</span>
+                        <span>LinkedIn</span>
                     </a>
                 </div>
                 <p class="footer-copyright">&copy; 2025 Manohar Daripalli. All rights reserved.</p>
@@ -831,8 +861,3 @@
 
 </body>
 </html>
-
-
-
-
-
